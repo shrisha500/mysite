@@ -175,6 +175,7 @@ function Projects() {
           title="UMich One-Stop Shop"
           stack="React · FastAPI · Python"
           image={umichShop}
+          alt = "image of central campus of the University of Michigan"
           description="Centralized student platform for personalized campus recommendations."
           bullets={[
             "Built backend authentication and data handling with FastAPI",
@@ -187,6 +188,7 @@ function Projects() {
           title="Predicting ICU Patient Mortality"
           stack="Python · scikit-learn"
           image={icuImg}
+          alt = "image of ICU"
           description="Machine learning models for predicting in-hospital ICU mortality."
           bullets={[
             "Implemented logistic regression and SVM models",
@@ -199,6 +201,7 @@ function Projects() {
           title="Bioinformatics Data Pipeline"
           stack="Python · R · HPC"
           image={bioImg}
+          alt = "image of lung x-ray"
           description="Computational pipeline for transcriptomic and genomic data analysis on HPC clusters."
           bullets={[
             "Preprocessed and normalized large-scale gene expression data",
@@ -211,10 +214,10 @@ function Projects() {
   );
 }
 
-function ProjectCard({ title, stack, description, bullets, image }) {
+function ProjectCard({ title, stack, description, bullets, image, alt }) {
   return (
     <div className="bg-card rounded-2xl overflow-hidden hover:-translate-y-2 transition">
-      <img src={image} alt={title} className="w-full h-44 object-cover" />
+      <img src={image} alt={alt} className="w-full h-44 object-cover" />
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-1">{title}</h3>
         <p className="text-sm text-text/60 mb-3">{stack}</p>
