@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Spline from "@splinetool/react-spline";
+import { useState, useEffect } from "react";
 
 /* ===== IMPORT PROJECT IMAGES (Vite-correct) ===== */
 import umichShop from "./assets/UMWiFI.png";
@@ -16,6 +17,7 @@ export default function App() {
       <Projects />
       <Experience />
       <Contact />
+      <BackToTop />
       <Footer />
     </div>
   );
@@ -300,6 +302,43 @@ function Contact() {
         Email Me
       </a>
     </section>
+  );
+}
+
+/* =========== BACK-TO-TOP BUTTON ===========*/
+
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={scrollToTop}
+      className="fixed bottom-6 right-6 bg-accent text-background px-4 py-3 rounded-xl shadow-lg hover:scale-105 transition z-50"
+    >
+      ↑
+    </button>
   );
 }
 
